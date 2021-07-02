@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  * @author Mahatoky
  */
 @Repository
-public interface ICarRepository extends CrudRepository<Car,Long> {
+public interface ICarRepository extends CrudRepository<Car,Integer> {
 }
