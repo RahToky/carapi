@@ -25,5 +25,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-
+    public void saveCar(Car car){
+        carRepository.save(car);
+    }
 }
