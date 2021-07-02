@@ -14,7 +14,7 @@ public class Car{
 
     @Id
     @GeneratedValue
-    protected int id;
+    private int id;
 
     @NotNull
     @Length(min = 1,max = 30)

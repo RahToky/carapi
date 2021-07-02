@@ -15,7 +15,7 @@ public class User{
 
     @Id
     @GeneratedValue
-    protected int id;
+    private int id;
 
     @NotNull
     @Length(min = 4,max = 10)
