@@ -10,7 +10,11 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
-public class Car extends BaseModel{
+public class Car{
+
+    @Id
+    @GeneratedValue
+    protected int id;
 
     @NotNull
     @Length(min = 1,max = 30)
