@@ -37,15 +37,21 @@ public class CommentController {
         return ResponseEntity.ok(commentService.findCommentsByCarId(carId));
     }
 
+    /**
+     * Permet de faire un commentaire sur une voiture à condition d'être connecté
+     *
+     * @param headers doit contenir un Autherisation de type Bearer avec Token
+     * @param comment le commentaire, doit contenir l'id de l'utilisateur
+     * @param carId   l'id de la voiture à commenter
+     * @return rien sinon erreur Token
+     */
     @PostMapping(value = BASE_URL)
     public ResponseEntity<Object> comment(@RequestHeader HttpHeaders headers, @RequestBody Comment comment, @PathVariable int carId) {
-
-
         try {
             String token = TokenUtil.getToken(headers);
             User user = userService.findUserByToken(token);
 
-            if(user == null || comment.getUserId() != user.getId())
+            if (user == null || comment.getUserId() != user.getId())
                 throw new TokenException("Token invalide");
 
             if (comment.getUserId() == 0)
@@ -63,7 +69,7 @@ public class CommentController {
                     .toUri();
             return ResponseEntity.created(location).build();
         } catch (TokenException e) {
-            return ResponseEntity.status(401).body(new ErrorResponse(401,"Unauthorized",e.getMessage(),BASE_URL.replace("{carId}",String.valueOf(carId))));
+            return ResponseEntity.status(401).body(new ErrorResponse(401, "Unauthorized", e.getMessage(), BASE_URL.replace("{carId}", String.valueOf(carId))));
         }
     }
 

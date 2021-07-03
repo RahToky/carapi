@@ -15,14 +15,14 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @Entity
-public class User{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
-    @Length(min = 4,max = 10)
+    @Length(min = 4, max = 10)
     private String pseudo;
 
     @NotNull

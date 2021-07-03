@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Permet de faire des opérations CRUD dans la table {@link Car}
+ *
  * @author Mahatoky
  */
 @Repository
-public interface ICarRepository extends CrudRepository<Car,Integer> {
+public interface ICarRepository extends CrudRepository<Car, Integer> {
 }

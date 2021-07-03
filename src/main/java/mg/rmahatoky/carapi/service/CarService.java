@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * Couche métier pour les {@link Car}
+ *
  * @author Mahatoky
  */
 @Data
@@ -19,13 +20,18 @@ public class CarService {
 
     /**
      * Pour recuperer la liste de toutes les voitures
+     *
      * @return la liste des voitures
      */
-    public Iterable<Car> getCars(){
+    public Iterable<Car> getCars() {
         return carRepository.findAll();
     }
 
-    public void saveCar(Car car){
-        carRepository.save(car);
+    public Car saveCar(Car car) {
+        return carRepository.save(car);
+    }
+
+    public Car findCarById(int id) {
+        return carRepository.findById(id).get();
     }
 }

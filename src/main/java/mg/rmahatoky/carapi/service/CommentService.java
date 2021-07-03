@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Couche métier pour les {@link Comment}
+ *
  * @author Mahatoky
  */
 @Service
@@ -17,11 +18,11 @@ public class CommentService {
     @Autowired
     private ICommentRepository commentRepository;
 
-    public List<Comment> findCommentsByCarId(int id){
+    public List<Comment> findCommentsByCarId(int id) {
         return commentRepository.findCommentsByCarId(id);
     }
 
-    public Comment saveComment(Comment comment){
+    public Comment saveComment(Comment comment) {
         return commentRepository.save(comment);
     }
 }

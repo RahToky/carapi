@@ -6,12 +6,14 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Permet de faire des opérations CRUD dans la table {@link User}
+ *
  * @author Mahatoky
  */
 @Repository
-public interface IUserRepository extends CrudRepository<User,Integer> {
+public interface IUserRepository extends CrudRepository<User, Integer> {
 
     User findFirstByPseudoAndPassword(String pseudo, String password);
+
     User findFirstByToken(String token);
 
 }

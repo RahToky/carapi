@@ -5,12 +5,13 @@ import java.security.MessageDigest;
 
 /**
  * Pour encoder les mots de passe
+ *
  * @author Mahatoky
  */
 public abstract class PasswordUtil {
 
     //TODO: Dois utiliser autre que MD5
-    public static String encrypt(String password){
+    public static String encrypt(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(password.getBytes());

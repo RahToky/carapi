@@ -8,10 +8,11 @@ import java.util.List;
 
 /**
  * Permet de faire des opérations CRUD dans la table {@link Comment}
+ *
  * @author Mahatoky
  */
 @Repository
-public interface ICommentRepository extends CrudRepository<Comment,Integer> {
+public interface ICommentRepository extends CrudRepository<Comment, Integer> {
 
     List<Comment> findCommentsByCarId(int id);
 

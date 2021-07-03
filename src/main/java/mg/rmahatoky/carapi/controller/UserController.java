@@ -39,8 +39,7 @@ public class UserController {
             findUser.setToken(token.split(" ")[1]);
             userService.saveToken(findUser);
             return ResponseEntity.ok(findUser);
-        }
-        else
+        } else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(404, "authentification", "Pseudo ou mot de passe incorrect", BASE_URL + "/login"));
     }
 
@@ -64,7 +63,7 @@ public class UserController {
                 .signWith(SignatureAlgorithm.HS512,
                         secretKey.getBytes()).compact();*/
 
-        return "Bearer " + System.currentTimeMillis()+ PasswordUtil.encrypt(username);
+        return "Bearer " + System.currentTimeMillis() + PasswordUtil.encrypt(username);
     }
 
 

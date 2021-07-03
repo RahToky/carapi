@@ -14,18 +14,18 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @Entity
-public class Car{
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
-    @Length(min = 1,max = 30)
+    @Length(min = 1, max = 30)
     private String brand;
 
     @NotNull
-    @Length(min = 1,max = 30)
+    @Length(min = 1, max = 30)
     private String model;
 
     @NotNull
