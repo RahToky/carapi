@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 /**
  * API pour les {@link Comment}
@@ -32,9 +31,25 @@ public class CommentController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Permet d'acceder aux commentaires à propors d'une voiture
+     * Necessite une Authorisation Bearer Token
+     *
+     * @param headers doit contenir un Autherisation de type Bearer avec Token
+     * @param carId
+     * @return la liste des commentaires à propos d'une voiture
+     */
     @GetMapping(value = BASE_URL)
-    public ResponseEntity<List<Comment>> getCommentByCarId(@PathVariable int carId) {
-        return ResponseEntity.ok(commentService.findCommentsByCarId(carId));
+    public ResponseEntity<Object> getCommentByCarId(@RequestHeader HttpHeaders headers, @PathVariable int carId) {
+        try {
+            String token = TokenUtil.getToken(headers);
+            User user = userService.findUserByToken(token);
+            if (user == null)
+                throw new TokenException("Token invalide");
+            return ResponseEntity.ok(commentService.findCommentsByCarId(carId));
+        } catch (TokenException e) {
+            return ResponseEntity.status(401).body(new ErrorResponse(401, "Unauthorized", e.getMessage(), BASE_URL.replace("{carId}", String.valueOf(carId))));
+        }
     }
 
     /**
