@@ -1,13 +1,13 @@
 package mg.rmahatoky.carapi.service;
 
 import lombok.Data;
-import mg.rmahatoky.carapi.model.Car;
+import mg.rmahatoky.carapi.model.entity.Car;
 import mg.rmahatoky.carapi.repository.ICarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Couche métier
+ * Couche métier pour les {@link Car}
  * @author Mahatoky
  */
 @Data

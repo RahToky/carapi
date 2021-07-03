@@ -1,6 +1,6 @@
 package mg.rmahatoky.carapi.controller;
 
-import mg.rmahatoky.carapi.model.Car;
+import mg.rmahatoky.carapi.model.entity.Car;
 import mg.rmahatoky.carapi.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

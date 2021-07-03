@@ -1,4 +1,4 @@
-package mg.rmahatoky.carapi.model;
+package mg.rmahatoky.carapi.model.entity;
 
 import lombok.Data;
 
@@ -8,18 +8,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author Mahatoky
+ */
 @Data
 @Entity
-public class Comment{
+public class Comment {
 
     @Id
     @GeneratedValue
     private int id;
 
-    @Column(name="car_id")
+    @Column(name = "car_id")
     private int carId;
 
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private int userId;
 
     @NotNull

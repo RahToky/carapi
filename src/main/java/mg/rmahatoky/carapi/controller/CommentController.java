@@ -1,6 +1,6 @@
 package mg.rmahatoky.carapi.controller;
 
-import mg.rmahatoky.carapi.model.Comment;
+import mg.rmahatoky.carapi.model.entity.Comment;
 import mg.rmahatoky.carapi.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

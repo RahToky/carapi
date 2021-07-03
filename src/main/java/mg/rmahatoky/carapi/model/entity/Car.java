@@ -1,4 +1,4 @@
-package mg.rmahatoky.carapi.model;
+package mg.rmahatoky.carapi.model.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author Mahatoky
+ */
 @Data
 @Entity
 public class Car{
