@@ -26,11 +26,17 @@ public class CommentController {
         return ResponseEntity.ok(commentService.findCommentsByCarId(id));
     }
 
-    @PostMapping(value = "/cars/{id}/comments")
-    public ResponseEntity<Void> comment(@RequestBody Comment comment) {
+    @PostMapping(value = "/cars/{carId}/comments")
+    public ResponseEntity<Void> comment(@RequestBody Comment comment, @PathVariable int carId) {
+
+        if(comment.getUserId() == 0)
+            return ResponseEntity.badRequest().build();
+
+        comment.setCarId(carId);
         Comment savedComment = commentService.saveComment(comment);
         if (savedComment == null)
             return ResponseEntity.noContent().build();
+
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
