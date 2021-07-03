@@ -30,4 +30,12 @@ public class UserService {
         return userRepository.findFirstByPseudoAndPassword(user.getPseudo(), PasswordUtil.encrypt(user.getPassword()));
     }
 
+    public User findUserByToken(String token){
+        return userRepository.findFirstByToken(token);
+    }
+
+    public void saveToken(User user){
+        userRepository.save(user);
+    }
+
 }

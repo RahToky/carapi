@@ -29,4 +29,6 @@ public class User{
     @Min(4)
     private String password;
 
+    private String token;
+
 }

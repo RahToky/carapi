@@ -3,7 +3,8 @@ CREATE TABLE User
 (
     id       INT AUTO_INCREMENT PRIMARY KEY,
     pseudo   VARCHAR(10)  NOT NULL,
-    password VARCHAR(250) NOT NULL
+    password VARCHAR(250) NOT NULL,
+    token VARCHAR(500)
 );
 
 DROP TABLE IF EXISTS Car;

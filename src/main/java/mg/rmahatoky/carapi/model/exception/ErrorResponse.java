@@ -3,7 +3,7 @@ package mg.rmahatoky.carapi.model.exception;
 import lombok.Data;
 
 /**
- * Message d'erreur
+ * Message d'erreur comme reponse à une requette
  *
  * @author Mahatoky
  */
