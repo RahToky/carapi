@@ -2,7 +2,6 @@ package mg.rmahatoky.carapi.service;
 
 import lombok.Data;
 import mg.rmahatoky.carapi.model.entity.User;
-import mg.rmahatoky.carapi.model.util.PasswordUtil;
 import mg.rmahatoky.carapi.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class UserService {
      * @return l'information de l'{@link User}
      */
     public User authenticate(User user) {
-        return userRepository.findFirstByPseudoAndPassword(user.getPseudo(), PasswordUtil.encrypt(user.getPassword()));
+        return userRepository.findFirstByPseudoAndPassword(user.getPseudo(), user.getPassword());
     }
 
     public User findUserByToken(String token) {

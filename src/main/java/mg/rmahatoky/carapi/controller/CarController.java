@@ -29,8 +29,8 @@ public class CarController {
     }
 
     @GetMapping(value = BASE_URL+"/{id}")
-    public ResponseEntity<Car> findCarById(@PathVariable int id){
-        return ResponseEntity.ok(carService.findCarById(id));
+    public Car findCarById(@PathVariable int id){
+        return carService.findCarById(id);
     }
 
     /**

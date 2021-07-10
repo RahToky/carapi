@@ -1,11 +1,9 @@
 package mg.rmahatoky.carapi.controller;
 
+import mg.rmahatoky.carapi.exception.UserNotFoundException;
 import mg.rmahatoky.carapi.model.entity.User;
-import mg.rmahatoky.carapi.model.exception.ErrorResponse;
-import mg.rmahatoky.carapi.model.util.PasswordUtil;
 import mg.rmahatoky.carapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +25,9 @@ public class UserController {
     /**
      * Authentification {@link User}
      *
-     * @param user contient le pseudo et le password non encrypter
+     * @param user contient le pseudo et le password hasher en SHA-256
      * @return le detail de l'{@link User} + token ou message d'erreur au cas échéant.
      */
-    //TODO: le mot de passe doit être encrypté à l'avance
     @PostMapping(value = BASE_URL + "/login")
     public ResponseEntity<Object> login(@RequestBody User user) {
         User findUser = userService.authenticate(user);
@@ -39,8 +36,9 @@ public class UserController {
             findUser.setToken(token.split(" ")[1]);
             userService.saveToken(findUser);
             return ResponseEntity.ok(findUser);
-        } else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(404, "authentification", "Pseudo ou mot de passe incorrect", BASE_URL + "/login"));
+        } else {
+            throw new UserNotFoundException("Pseudo ou mot de passe incorrect");
+        }
     }
 
 
@@ -63,7 +61,7 @@ public class UserController {
                 .signWith(SignatureAlgorithm.HS512,
                         secretKey.getBytes()).compact();*/
 
-        return "Bearer " + System.currentTimeMillis() + PasswordUtil.encrypt(username);
+        return "Bearer " + System.currentTimeMillis();
     }
 
 

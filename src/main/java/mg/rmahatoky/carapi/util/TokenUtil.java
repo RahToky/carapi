@@ -1,6 +1,6 @@
-package mg.rmahatoky.carapi.model.util;
+package mg.rmahatoky.carapi.util;
 
-import mg.rmahatoky.carapi.model.exception.TokenException;
+import mg.rmahatoky.carapi.exception.TokenException;
 import org.springframework.http.HttpHeaders;
 
 import java.util.List;
