@@ -1,5 +1,7 @@
 package mg.rmahatoky.carapi.service;
 
+import mg.rmahatoky.carapi.exception.DataSaveException;
+import mg.rmahatoky.carapi.exception.RequestBodyException;
 import mg.rmahatoky.carapi.model.dto.request.PostCommentRequest;
 import mg.rmahatoky.carapi.model.entity.Comment;
 import mg.rmahatoky.carapi.repository.ICommentRepository;
@@ -23,11 +25,16 @@ public class CommentService {
         return commentRepository.findCommentsByCarId(id);
     }
 
-    public Comment saveComment(PostCommentRequest commentRequest, int carId) {
+    public int saveComment(PostCommentRequest commentRequest, int carId) {
+        if (commentRequest.getUserId() == 0 || commentRequest.getText() == null || commentRequest.getText().trim().isEmpty())
+            throw new RequestBodyException();
         Comment comment = new Comment();
         comment.setCarId(carId);
         comment.setUserId(commentRequest.getUserId());
         comment.setText(commentRequest.getText());
-        return commentRepository.save(comment);
+        Comment commentResponse = commentRepository.save(comment);
+        if (commentResponse != null)
+            return commentResponse.getUserId();
+        throw new DataSaveException();
     }
 }

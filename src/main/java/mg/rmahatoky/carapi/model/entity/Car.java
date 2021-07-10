@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -20,11 +21,13 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+    @NotNull(message = "La marque est obligatoire")
+    @NotBlank(message = "La marque ne doit pas être vide")
     @Length(min = 1, max = 30)
     private String brand;
 
-    @NotNull
+    @NotNull(message = "Le model est obligatoire")
+    @NotBlank(message = "Le model ne doit pas être vide")
     @Length(min = 1, max = 30)
     private String model;
 

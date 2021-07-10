@@ -29,7 +29,7 @@ public class BearerTokenInterceptor implements HandlerInterceptor {
             throw new TokenException("Vous devez utiliser Bearer comme type d'autorisation");
         }
 
-        String token = authorization.substring(7);
+        final String token = authorization.substring(7);
         if (!tokenManagementService.isValidToken(token)) {
             throw new TokenException("Token invalide");
         }

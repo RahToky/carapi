@@ -5,7 +5,7 @@ CREATE TABLE User
     pseudo   VARCHAR(10)  NOT NULL,
     password VARCHAR(250) NOT NULL,
     photo    CLOB DEFAULT NULL,
-    token    VARCHAR(500)
+    token    TEXT
 );
 
 DROP TABLE IF EXISTS Car;
@@ -25,11 +25,3 @@ CREATE TABLE Comment
     user_id Int,
     text    TEXT NOT NULL
 );
-
-DROP TABLE IF EXISTS user_token;
-CREATE TABLE user_token
-(
-    id      INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    token   TEXT NOT NULL
-)

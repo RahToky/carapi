@@ -1,6 +1,7 @@
 package mg.rmahatoky.carapi.service;
 
-import mg.rmahatoky.carapi.repository.IUserTokenRepository;
+import mg.rmahatoky.carapi.model.entity.User;
+import mg.rmahatoky.carapi.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +9,15 @@ import org.springframework.stereotype.Service;
 public class TokenManagementService {
 
     @Autowired
-    IUserTokenRepository userTokenRepository;
+    IUserRepository userRepository;
 
     public boolean isValidToken(String token){
-        return userTokenRepository.findFirstByToken(token) != null;
+        User user = userRepository.findFirstByToken(token);
+        return user != null;
+    }
+
+    public String generateToken(){
+        return null;
     }
 
 }

@@ -3,6 +3,7 @@ package mg.rmahatoky.carapi.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -22,7 +23,8 @@ public class Comment {
     @Column(name = "user_id")
     private int userId;
 
-    @NotNull
+    @NotNull(message = "Le text du commentaire est obligatoire")
+    @NotBlank(message = "Le commentaire ne doit pas être vide")
     private String text;
 
 }

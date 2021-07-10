@@ -17,7 +17,8 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 
     User findFirstByPseudoAndPassword(String pseudo, String password);
 
-    @Query(value = "SELECT u FROM User u WHERE u.id = (SELECT ut.userId FROM UserToken ut WHERE ut.token = :token)")
-    User findUserByUserToken(@Param("token") String token);
+    User findFirstByToken(String token);
+
+    User findUserById(int id);
 
 }

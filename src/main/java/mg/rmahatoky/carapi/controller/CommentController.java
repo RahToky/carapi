@@ -47,21 +47,14 @@ public class CommentController {
      * @return rien sinon erreur Token
      */
     @PostMapping(value = BASE_URL)
-    public ResponseEntity<URI> comment(@RequestBody PostCommentRequest comment, @PathVariable int carId) {
+    public ResponseEntity<Object> comment(@RequestBody PostCommentRequest comment, @PathVariable int carId) {
 
-        System.out.println("userId="+comment.getUserId()+" text:"+comment.getText());
-
-        if (comment.getUserId() == 0)
-            throw new RequestBodyException();
-
-        Comment savedComment = commentService.saveComment(comment,carId);
-        if (savedComment == null)
-            throw new DataSaveException();
+        int savedCommentId = commentService.saveComment(comment, carId);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedComment.getId())
+                .buildAndExpand(savedCommentId)
                 .toUri();
 
         return ResponseEntity.created(location).build();
