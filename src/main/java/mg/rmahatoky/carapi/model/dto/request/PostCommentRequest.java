@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Utiliser comme corps de la requette pour poster un commentaire
+ *
  * @author Mahatoky
  */
 @Data

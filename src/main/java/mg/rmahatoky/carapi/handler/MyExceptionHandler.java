@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * Pour gerer les exceptions
+ * Capturer automatiquement les exceptions et les envoie en tant que {@link ResponseEntity}
  *
  * @author Mahatoky
  */

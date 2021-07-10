@@ -5,10 +5,19 @@ Api disponible
 - [x] L'utilisateur non connecté peut voir la liste mais pas les commentaires. 
 - [x] On ne doit pouvoir accéder aux commentaires seulement si on est connecté.
 
-Mock
-- On utilise MD5 (faute de temps de développement)
-- On utiliser un faux génerateur de Token (faute de temps de développement)
+Base de donnée
+- [x] H2
 
-Amélioration à faire
-- Changer le MD5
-- Utiliser JWT
+Securité
+- [x] BearerTokenInterceptor
+- [x] JWT pour les tokens
+- [x] SHA-256 pour le hashage
+
+Api Sécurisé
+- [x] */cars/{id}/comments*
+
+Info User pour tester l'API
+```
+Login: abnex
+Pass : 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+```
