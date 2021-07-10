@@ -25,7 +25,7 @@
 /cars
 /cars/{id}
 ```
-* /users : pour voir les pseudo/pass afin de faciliter l'authentification*
+*/users : pour voir les pseudo/pass afin de faciliter l'authentification*
 
 **Api Sécurisé**
 
