@@ -1,7 +1,5 @@
 # CarApi
 
-**Api disponible**
-
 - [x] L'application permet d'avoir une liste de voitures.
 - [x] Chaque utilisateur peut commenter une voiture.
 - [x] L'utilisateur non connecté peut voir la liste mais pas les commentaires.
