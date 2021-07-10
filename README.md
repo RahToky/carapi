@@ -1,22 +1,24 @@
 # CarApi
-Api disponible
+#Api disponible
 - [x] L'application permet d'avoir une liste de voitures. 
 - [x] Chaque utilisateur peut commenter une voiture.
 - [x] L'utilisateur non connecté peut voir la liste mais pas les commentaires. 
 - [x] On ne doit pouvoir accéder aux commentaires seulement si on est connecté.
 
-Base de donnée
+#Base de donnée
 - [x] H2
 
-Securité
+#Securité
 - [x] BearerTokenInterceptor
 - [x] JWT pour les tokens
 - [x] SHA-256 pour le hashage
 
-Api Sécurisé
-- [x] */cars/{id}/comments*
+#Api Sécurisé
+```
+ */cars/{id}/comments*
+ ```
 
-Info User pour tester l'API
+#Info User pour tester l'API
 ```
 Login: abnex
 Pass : 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
