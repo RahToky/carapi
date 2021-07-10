@@ -1,9 +1,7 @@
 package mg.rmahatoky.carapi.controller;
 
-import mg.rmahatoky.carapi.model.entity.Car;
 import mg.rmahatoky.carapi.model.entity.Comment;
 import mg.rmahatoky.carapi.model.entity.User;
-import mg.rmahatoky.carapi.model.dto.ErrorResponse;
 import mg.rmahatoky.carapi.exception.TokenException;
 import mg.rmahatoky.carapi.util.TokenUtil;
 import mg.rmahatoky.carapi.service.CommentService;

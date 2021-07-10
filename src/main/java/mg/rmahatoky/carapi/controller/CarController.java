@@ -24,8 +24,8 @@ public class CarController {
     private CarService carService;
 
     @GetMapping(value = BASE_URL)
-    public ResponseEntity<Iterable<Car>> getCars() {
-        return ResponseEntity.ok(carService.getCars());
+    public Iterable<Car> getCars() {
+        return carService.getCars();
     }
 
     @GetMapping(value = BASE_URL+"/{id}")
@@ -49,6 +49,7 @@ public class CarController {
                 .path("/{id}")
                 .buildAndExpand(saveCar.getId())
                 .toUri();
+
         return ResponseEntity.created(location).build();
     }
 

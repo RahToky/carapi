@@ -1,4 +1,4 @@
-package mg.rmahatoky.carapi.model.dto;
+package mg.rmahatoky.carapi.model.dto.response;
 
 import lombok.Data;
 

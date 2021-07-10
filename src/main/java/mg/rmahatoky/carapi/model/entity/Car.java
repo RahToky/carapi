@@ -29,6 +29,6 @@ public class Car {
     private String model;
 
     @NotNull
-    private String img;
+    private String photo;
 
 }
