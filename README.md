@@ -13,14 +13,24 @@
 
 **Securité**
 
+- [x] SpringSecurity
 - [x] BearerTokenInterceptor
 - [x] JWT pour les tokens
 - [x] SHA-256 pour le hashage
 
+**Api Non Sécurisé**
+
+```
+/users 
+/cars
+/cars/{id}
+```
+* /users : pour voir les pseudo/pass afin de faciliter l'authentification*
+
 **Api Sécurisé**
 
 ```
- */cars/{id}/comments*
+ /cars/{id}/comments
  ```
 
 **Info User pour tester l'API**
