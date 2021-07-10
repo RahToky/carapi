@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IUserTokenRepository extends CrudRepository<UserToken, Integer> {
+
+    UserToken findFirstByToken(String token);
+
 }
