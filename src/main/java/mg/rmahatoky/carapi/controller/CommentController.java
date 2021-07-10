@@ -1,5 +1,8 @@
 package mg.rmahatoky.carapi.controller;
 
+import mg.rmahatoky.carapi.exception.DataSaveException;
+import mg.rmahatoky.carapi.exception.RequestBodyException;
+import mg.rmahatoky.carapi.model.dto.request.PostCommentRequest;
 import mg.rmahatoky.carapi.model.entity.Comment;
 import mg.rmahatoky.carapi.service.CommentService;
 import mg.rmahatoky.carapi.service.UserService;
@@ -24,9 +27,6 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @Autowired
-    private UserService userService;
-
     /**
      * Permet d'acceder aux commentaires à propors d'une voiture
      * Necessite une Authorisation Bearer Token
@@ -47,20 +47,23 @@ public class CommentController {
      * @return rien sinon erreur Token
      */
     @PostMapping(value = BASE_URL)
-    public ResponseEntity<Object> comment(@RequestBody Comment comment, @PathVariable int carId) {
-        if (comment.getUserId() == 0)
-            return ResponseEntity.badRequest().build();
+    public ResponseEntity<URI> comment(@RequestBody PostCommentRequest comment, @PathVariable int carId) {
 
-        comment.setCarId(carId);
-        Comment savedComment = commentService.saveComment(comment);
+        System.out.println("userId="+comment.getUserId()+" text:"+comment.getText());
+
+        if (comment.getUserId() == 0)
+            throw new RequestBodyException();
+
+        Comment savedComment = commentService.saveComment(comment,carId);
         if (savedComment == null)
-            return ResponseEntity.noContent().build();
+            throw new DataSaveException();
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedComment.getId())
                 .toUri();
+
         return ResponseEntity.created(location).build();
     }
 
