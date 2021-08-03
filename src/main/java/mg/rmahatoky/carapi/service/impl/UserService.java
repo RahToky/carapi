@@ -22,13 +22,6 @@ public class UserService implements IUserService {
     @Autowired
     private IUserRepository userRepository;
 
-    /**
-     * Pour chercher l'{@link User}
-     * Le mot de passe sera encrypter en {@link sun.security.provider.MD5}
-     *
-     * @param user contient l'information de l'{@link User}
-     * @return l'information de l'{@link User}
-     */
     @Override
     public User authenticate(AuthRequest user) {
         User u = userRepository.findFirstByPseudoAndPassword(user.getPseudo(), user.getPassword());

@@ -19,11 +19,6 @@ public class CarService implements ICarService {
     @Autowired
     private ICarRepository carRepository;
 
-    /**
-     * Pour recuperer la liste de toutes les voitures
-     *
-     * @return la liste des voitures
-     */
     @Override
     public Iterable<Car> getCars() {
         return carRepository.findAll();

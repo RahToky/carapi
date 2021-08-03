@@ -5,6 +5,11 @@ import mg.rmahatoky.carapi.model.entity.Comment;
 
 import java.util.List;
 
+/**
+ * Interface métier pour les {@link Comment}
+ *
+ * @author Mahatoky
+ */
 public interface ICommentService {
 
     List<Comment> findCommentsByCarId(int id);

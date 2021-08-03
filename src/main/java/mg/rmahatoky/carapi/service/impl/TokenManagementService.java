@@ -4,9 +4,13 @@ import mg.rmahatoky.carapi.model.entity.User;
 import mg.rmahatoky.carapi.repository.IUserRepository;
 import mg.rmahatoky.carapi.service.ITokenManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+/**
+ * Couche métier pour les Token
+ *
+ * @author Mahatoky
+ */
 @Service
 public class TokenManagementService implements ITokenManagementService {
 
