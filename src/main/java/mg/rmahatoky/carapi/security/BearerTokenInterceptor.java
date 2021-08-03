@@ -1,7 +1,7 @@
 package mg.rmahatoky.carapi.security;
 
 import mg.rmahatoky.carapi.exception.TokenException;
-import mg.rmahatoky.carapi.service.TokenManagementService;
+import mg.rmahatoky.carapi.service.impl.TokenManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

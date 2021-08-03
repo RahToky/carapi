@@ -4,12 +4,9 @@ import mg.rmahatoky.carapi.model.dto.request.AuthRequest;
 import mg.rmahatoky.carapi.model.dto.response.AuthResponse;
 import mg.rmahatoky.carapi.model.entity.User;
 import mg.rmahatoky.carapi.security.JwtUtils;
-import mg.rmahatoky.carapi.service.UserService;
+import mg.rmahatoky.carapi.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * API pour les {@link User}
@@ -17,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Mahatoky
  */
 @RestController
+@RequestMapping("/users")
 public class UserController {
-
-    public static final String BASE_URL = "/users";
 
     @Autowired
     private UserService userService;
@@ -33,7 +29,7 @@ public class UserController {
      * @param user contient le pseudo et le password hasher en SHA-256
      * @return le detail de l'{@link User} + token ou message d'erreur au cas échéant.
      */
-    @PostMapping(value = BASE_URL + "/login")
+    @PostMapping(value = "/login")
     public AuthResponse login(@RequestBody AuthRequest user) {
         User findUser = userService.authenticate(user);
         String token = jwtUtils.generateJwtToken(user);
@@ -48,7 +44,7 @@ public class UserController {
      *
      * @return tous les utilisateurs
      */
-    @GetMapping(value = BASE_URL)
+    @GetMapping()
     public Iterable<User> getUsers() {
         return userService.findAllUsers();
     }

@@ -1,4 +1,4 @@
-package mg.rmahatoky.carapi.service;
+package mg.rmahatoky.carapi.service.impl;
 
 import lombok.Data;
 import mg.rmahatoky.carapi.exception.UserNotFoundException;
@@ -6,6 +6,7 @@ import mg.rmahatoky.carapi.model.dto.request.AuthRequest;
 import mg.rmahatoky.carapi.model.dto.response.AuthResponse;
 import mg.rmahatoky.carapi.model.entity.User;
 import mg.rmahatoky.carapi.repository.IUserRepository;
+import mg.rmahatoky.carapi.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Data
 @Service
-public class UserService {
+public class UserService implements IUserService {
 
     @Autowired
     private IUserRepository userRepository;
@@ -28,6 +29,7 @@ public class UserService {
      * @param user contient l'information de l'{@link User}
      * @return l'information de l'{@link User}
      */
+    @Override
     public User authenticate(AuthRequest user) {
         User u = userRepository.findFirstByPseudoAndPassword(user.getPseudo(), user.getPassword());
         if (u != null)
@@ -35,14 +37,17 @@ public class UserService {
         throw new UserNotFoundException("Pseudo ou mot de passe incorrect");
     }
 
-    private User findUserById(int id){
+    @Override
+    public User findUserById(int id){
         return userRepository.findUserById(id);
     }
 
+    @Override
     public void saveToken(User user) {
         userRepository.save(user);
     }
 
+    @Override
     public Iterable<User> findAllUsers() {
         return userRepository.findAll();
     }

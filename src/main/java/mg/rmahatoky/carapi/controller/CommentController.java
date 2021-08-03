@@ -1,11 +1,8 @@
 package mg.rmahatoky.carapi.controller;
 
-import mg.rmahatoky.carapi.exception.DataSaveException;
-import mg.rmahatoky.carapi.exception.RequestBodyException;
 import mg.rmahatoky.carapi.model.dto.request.PostCommentRequest;
 import mg.rmahatoky.carapi.model.entity.Comment;
-import mg.rmahatoky.carapi.service.CommentService;
-import mg.rmahatoky.carapi.service.UserService;
+import mg.rmahatoky.carapi.service.impl.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +17,8 @@ import java.util.List;
  * @author Mahatoky
  */
 @RestController
+@RequestMapping("/cars/{carId}/comments")
 public class CommentController {
-
-    public static final String BASE_URL = "/cars/{carId}/comments";
 
     @Autowired
     private CommentService commentService;
@@ -34,7 +30,7 @@ public class CommentController {
      * @param carId
      * @return la liste des commentaires à propos d'une voiture
      */
-    @GetMapping(value = BASE_URL)
+    @GetMapping()
     public List<Comment> getCommentByCarId(@PathVariable int carId) {
         return commentService.findCommentsByCarId(carId);
     }
@@ -46,7 +42,7 @@ public class CommentController {
      * @param carId   l'id de la voiture à commenter
      * @return rien sinon erreur Token
      */
-    @PostMapping(value = BASE_URL)
+    @PostMapping()
     public ResponseEntity<Object> comment(@RequestBody PostCommentRequest comment, @PathVariable int carId) {
 
         int savedCommentId = commentService.saveComment(comment, carId);

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
 
     private static final String[] PATH_PATTERNS = {
-            CommentController.BASE_URL
+            "/cars/{carId}/comments"
     };
 
     @Autowired
