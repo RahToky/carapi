@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CarService implements ICarService {
 
     @Autowired
-    private ICarRepository carRepository;
+    ICarRepository carRepository;
 
     @Override
     public Iterable<Car> getCars() {

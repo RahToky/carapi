@@ -19,7 +19,7 @@ import java.net.URI;
 public class CarController {
 
     @Autowired
-    private CarService carService;
+    CarService carService;
 
     @GetMapping
     public Iterable<Car> getCars() {

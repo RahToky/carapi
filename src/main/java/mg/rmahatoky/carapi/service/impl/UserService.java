@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements IUserService {
 
     @Autowired
-    private IUserRepository userRepository;
+    IUserRepository userRepository;
 
     @Override
     public User authenticate(AuthRequest user) {

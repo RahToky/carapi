@@ -21,7 +21,7 @@ import java.util.List;
 public class CommentController {
 
     @Autowired
-    private CommentService commentService;
+    CommentService commentService;
 
     /**
      * Permet d'acceder aux commentaires à propors d'une voiture

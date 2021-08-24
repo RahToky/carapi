@@ -20,7 +20,7 @@ import java.util.List;
 public class CommentService implements ICommentService {
 
     @Autowired
-    private ICommentRepository commentRepository;
+    ICommentRepository commentRepository;
 
     @Override
     public List<Comment> findCommentsByCarId(int id) {
