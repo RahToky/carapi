@@ -21,6 +21,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
             "/cars/{carId}/comments"
     };
 
+    /**
+     * Origins permis
+     */
+    private static final String[] CORS_PATH_PATTERNS = {
+            "http://localhost:8080",
+            "http://localhost:8081"
+    };
+
     @Autowired
     BearerTokenInterceptor bearerTokenInterceptor;
 
@@ -30,11 +38,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Seul les deux origins ["http://localhost:8080","http://localhost:8081"] peuvent appeller l'endpoint "/cars"
+     * Seul les deux origins {@link #PATH_PATTERNS} peuvent appeller l'endpoint "/cars"
+     *
      * @param registry
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/cars").allowedOrigins("http://localhost:8080","http://localhost:8081");
+        registry.addMapping("/cars").allowedOrigins(CORS_PATH_PATTERNS);
     }
 }
