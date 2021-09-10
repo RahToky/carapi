@@ -1,6 +1,6 @@
 # CarApi
 
-- [x] L'application permet d'avoir une liste de voitures.
+- [x] L'application permet d'avoir une liste de voiture.
 - [x] Chaque utilisateur peut commenter une voiture.
 - [x] L'utilisateur non connecté peut voir la liste mais pas les commentaires.
 - [x] On ne doit pouvoir accéder aux commentaires seulement si on est connecté.
@@ -34,6 +34,6 @@
 **Info User pour tester l'API**
 
 ```
-Login: abnex
+Login: rahtoky
 Pass : 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
 ```
